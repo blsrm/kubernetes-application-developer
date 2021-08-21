@@ -1,8 +1,9 @@
 # Kubernetes Useful Commands
 
-
---dry-run: By default as soon as the command is run, the resource will be created. If you simply want to test your command, use the --dry-run=client option. This will not create the resource, instead, tell you whether the resource can be created and if your command is right.
--o yaml: This will output the resource definition in YAML format on the screen.
+> #### Notes:
+> --dry-run: By default as soon as the command is run, the resource will be created. 
+> If you simply want to test your command, use the --dry-run=client option. This will not create the resource, instead, tell you whether the resource can be created and if your command is right.
+> -o yaml: This will output the resource definition in YAML format on the screen.
 
 ## POD Commands
 ```
@@ -12,8 +13,11 @@ kubectl create namespace test-123 --dry-run -o json
 kubectl create namespace test-123 --dry-run -o yaml
 kubectl get pods -o wide
 
-kubectl run nginx --image=nginx                                         # Create an NGINX Pod
-kubectl run nginx --image=nginx  --dry-run=client -o yaml               # Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
+# Create an NGINX Pod
+kubectl run nginx --image=nginx
+
+# Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
+kubectl run nginx --image=nginx  --dry-run=client -o yaml
 
 
 
@@ -24,11 +28,20 @@ kubectl run nginx --image=nginx  --dry-run=client -o yaml               # Genera
 
 ## Deployment
 ```
-kubectl create deployment --image=nginx nginx                           # Create a deployment
-kubectl create deployment --image=nginx nginx --dry-run -o yaml         # Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
-kubectl create deployment nginx --image=nginx --replicas=4              # Generate Deployment with 4 Replicas
-kubectl scale deployment nginx --replicas=4                             # You can also scale a deployment using the kubectl scale command.
-kubectl create deployment nginx --image=nginx--dry-run=client -o yaml > nginx-deployment.yaml  # Another way to do this is to save the YAML definition to a file.
+# Create a deployment
+kubectl create deployment --image=nginx nginx
+
+# Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
+kubectl create deployment --image=nginx nginx --dry-run -o yaml
+
+# Generate Deployment with 4 Replicas
+kubectl create deployment nginx --image=nginx --replicas=4
+
+# You can also scale a deployment using the kubectl scale command.       
+kubectl scale deployment nginx --replicas=4
+
+# Another way to do this is to save the YAML definition to a file.
+kubectl create deployment nginx --image=nginx--dry-run=client -o yaml > nginx-deployment.yaml
 
 ```
 
