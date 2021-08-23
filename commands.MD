@@ -39,10 +39,6 @@ kubectl scale deployment nginx --replicas=4
 
 # Another way to do this is to save the YAML definition to a file.
 kubectl create deployment nginx --image=nginx--dry-run=client -o yaml > nginx-deployment.yaml
-
-
-
-
 ```
 
 ## Service
@@ -67,6 +63,7 @@ Both the above commands have their own challenges. While one of it cannot accept
 ### A quick note on editing PODs and Deployments
 
 > **Edit a POD**
+> 
 > Remember, you CANNOT edit specifications of an existing POD other than the below.
 > 
 > spec.containers[*].image
@@ -108,6 +105,7 @@ Both the above commands have their own challenges. While one of it cannot accept
 > **kubectl create -f my-new-pod.yaml**
 > 
 > **Edit Deployments**
+> 
 > With Deployments you can easily edit any field/property of the POD template. Since the pod template is a child of the deployment specification,  with every change the deployment will automatically delete and create a new pod with the new changes. So if you are asked to edit a property of a POD part of a deployment you may do that simply by running the command
 > 
 > **kubectl edit deployment my-deployment**
